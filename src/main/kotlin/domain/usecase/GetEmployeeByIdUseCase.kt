@@ -1,4 +1,8 @@
 package org.example.domain.usecase
 
-class GetEmployeeByIdUseCase {
+import org.example.domain.repository.AdminRepository
+import org.example.domain.repository.EmployeeRepository
+
+class GetEmployeeByIdUseCase(private val adminRepository: AdminRepository) {
+    fun invoke (id:Int) = adminRepository.getEmployeeById(id)
 }

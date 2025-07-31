@@ -1,30 +1,32 @@
-package org.example.data
+package org.example.data.repository
 
+import org.example.data.datasource.memory.AdminDataSource
+import org.example.data.datasource.memory.EmployeeDataSource
+import org.example.domain.exceptions.NotFoundException
 import org.example.domain.repository.AdminRepository
 import org.example.entity.Employee
 
-class AdminRepositoryImpl(): AdminRepository {
-    override fun addNewEmployee(employee: Employee): Boolean {
-
+class AdminRepositoryImpl(
+    private val employeeDataSource: EmployeeDataSource
+): AdminRepository {
+    override fun addNewEmployee(employee: Employee) {
+        employeeDataSource.addEmployee(employee)
     }
 
     override fun getEmployeeById(id: Int): Employee {
-        TODO("Not yet implemented")
+       return employeeDataSource.getEmployee(id)
     }
 
     override fun getAllEmployees(): List<Employee> {
-        TODO("Not yet implemented")
+        return employeeDataSource.getAllEmployees()
     }
 
-    override fun editEmployeeInfo(employee: Employee): Employee {
-        TODO("Not yet implemented")
+    override fun editEmployeeInfo(employee: Employee) {
+        employeeDataSource.updateEmployee(employee)
     }
 
-    override fun deleteEmployee(id: Int): Boolean {
-        TODO("Not yet implemented")
+    override fun deleteEmployee(id: Int) {
+        employeeDataSource.deleteEmployee(id)
     }
 
-    override fun displayEmployeeInfo(employee: Employee) {
-        TODO("Not yet implemented")
-    }
 }

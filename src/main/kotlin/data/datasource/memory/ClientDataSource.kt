@@ -4,16 +4,16 @@ import org.example.domain.exceptions.NotFoundException
 import org.example.entity.Client
 
 
-class ClientDataSources {
+class ClientDataSource {
     val clientsList: MutableList<Client> = mutableListOf()
 
     fun addClient( client: Client){
         clientsList.add(client)
     }
     fun deleteClient(id: Int){
-        clientsList.removeAt(id)
+        clientsList.removeIf { it.id == id }
     }
-    fun getClient(id: Int): Client?{
+    fun getClient(id: Int): Client{
         return clientsList.find { it.id == id }?:throw NotFoundException("no found client with id: $id")
     }
     fun updateClient(client: Client){

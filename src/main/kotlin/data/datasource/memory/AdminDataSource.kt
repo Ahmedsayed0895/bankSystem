@@ -4,7 +4,7 @@ import org.example.domain.exceptions.NotFoundException
 import org.example.entity.Admin
 
 
-object AdminDataSource {
+class AdminDataSource {
 
     val adminsList= mutableListOf(
         Admin(
@@ -16,7 +16,7 @@ object AdminDataSource {
     fun addAdmin(admin: Admin){
         adminsList.add(admin)
     }
-    fun findAdmin(id:Int):Admin{
+    fun getAdmin(id:Int):Admin{
         return adminsList.find { it.id == id }?:throw NotFoundException("not found admin with id $id")
     }
     fun getAllAdmins():List<Admin>{
@@ -30,7 +30,7 @@ object AdminDataSource {
         adminsList.indexOfFirst { it.id == admin.id }
             .takeIf { it != -1 }
             ?.let { adminsList[it] = admin}
-            ?:throw NotFoundException("not found admin with id ${admin.id}") 
+            ?:throw NotFoundException("not found admin with id ${admin.id}")
 
     }
 

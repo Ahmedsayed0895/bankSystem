@@ -1,4 +1,7 @@
 package org.example.domain.usecase
 
-class CheckBalanceUseCase {
+import org.example.domain.repository.ClientRepository
+
+class CheckBalanceUseCase(val clientRepository: ClientRepository) {
+    fun invoke(id:Int)= clientRepository.checkBalance(id = id)
 }

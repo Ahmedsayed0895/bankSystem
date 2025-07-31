@@ -1,4 +1,9 @@
 package org.example.domain.exceptions
 
-class Exceptions {
-}
+
+open class SystemExceptions(message: String) : Exception(message)
+class InvalidToAddException(message: String): SystemExceptions(message)
+class InvalidToDeleteException(message: String): SystemExceptions(message)
+class NotFoundException(message: String): SystemExceptions(message)
+class SmallerThanZeroException(message: String): SystemExceptions(message)
+class WithDrawException(message: String): SystemExceptions(message)
