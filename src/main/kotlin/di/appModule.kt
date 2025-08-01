@@ -23,6 +23,7 @@ import org.example.domain.usecase.GetClientByIdUseCase
 import org.example.domain.usecase.GetEmployeeByIdUseCase
 import org.example.domain.usecase.TransferMoneyUseCase
 import org.example.domain.usecase.WithDrawUseCase
+import org.example.presentation.ClientUi
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 
@@ -53,4 +54,8 @@ val memoryDataSourceModule = module {
     singleOf(::AdminDataSource)
     singleOf(::ClientDataSource)
     singleOf(::EmployeeDataSource)
+}
+
+val uiModule = module {
+    singleOf(::ClientUi)
 }

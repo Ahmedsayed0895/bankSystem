@@ -4,5 +4,5 @@ import org.example.domain.repository.AdminRepository
 import org.example.domain.repository.EmployeeRepository
 
 class GetEmployeeByIdUseCase(private val adminRepository: AdminRepository) {
-    fun invoke (id:Int) = adminRepository.getEmployeeById(id)
+    operator fun invoke (id:Int) = adminRepository.getEmployeeById(id)
 }
