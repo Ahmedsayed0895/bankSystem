@@ -13,7 +13,7 @@ class AuthRepositoryImpl(
     private val employeeDataSource: EmployeeDataSource,
     private val clientDataSource: ClientDataSource
 
-): AuthRepository {
+) : AuthRepository {
     override fun login(username: String, password: String): Auth {
         adminDataSource.getAllAdmins().find { it.name == username && it.password == password }?.let {
             return Auth(

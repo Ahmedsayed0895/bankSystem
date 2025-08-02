@@ -1,18 +1,8 @@
 package org.example.presentation
 
 import org.example.domain.exceptions.InvalidIdException
-import org.example.domain.usecase.AddNewClientUseCase
-import org.example.domain.usecase.AddNewEmployeeUseCase
-import org.example.domain.usecase.DeleteClientUseCase
-import org.example.domain.usecase.DeleteEmployeeUseCase
-import org.example.domain.usecase.EditClientInfoUseCase
-import org.example.domain.usecase.EditEmployeeInfoUseCase
-import org.example.domain.usecase.GetAllClientsUseCase
-import org.example.domain.usecase.GetAllEmployeesUseCase
-import org.example.domain.usecase.GetClientByIdUseCase
-import org.example.domain.usecase.GetEmployeeByIdUseCase
+import org.example.domain.usecase.*
 import org.example.entity.Client
-import org.example.entity.Employee
 import org.example.presentation.util.ConsoleStyle
 
 class EmployeeUi(
@@ -26,7 +16,7 @@ class EmployeeUi(
         try {
             welcomeMsg()
             startMenu()
-        }catch (e:Exception){
+        } catch (e: Exception) {
             println(ConsoleStyle.errorMsg(e.message ?: "something went wrong"))
         }
 
@@ -51,6 +41,7 @@ class EmployeeUi(
                     println(ConsoleStyle.success("👋 Goodbye!"))
                     break
                 }
+
                 else -> println(ConsoleStyle.errorMsg("❌ Unknown option"))
             }
         }

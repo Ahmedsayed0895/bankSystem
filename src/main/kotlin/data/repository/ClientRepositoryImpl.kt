@@ -29,8 +29,9 @@ class ClientRepositoryImpl(
     }
 
     override fun transferMoney(id: Int, amount: Double, receiverId: Int) {
-        clientDataSource.getAllClients().find { it.id == id }?:throw NotFoundException("no found client with id: $id")
-        clientDataSource.getAllClients().find { it.id == receiverId }?:throw NotFoundException("no found client with id: $receiverId")
+        clientDataSource.getAllClients().find { it.id == id } ?: throw NotFoundException("no found client with id: $id")
+        clientDataSource.getAllClients().find { it.id == receiverId }
+            ?: throw NotFoundException("no found client with id: $receiverId")
         withdraw(id = id, amount = amount)
         deposit(id = receiverId, amount = amount)
     }

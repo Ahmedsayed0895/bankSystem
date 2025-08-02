@@ -20,8 +20,8 @@ class AdminUi(
         try {
             welcomeMsg()
             startMenu()
-        }catch (e:Exception){
-            println(errorMsg(e.message?:"something went wrong"))
+        } catch (e: Exception) {
+            println(errorMsg(e.message ?: "something went wrong"))
         }
 
     }
@@ -45,6 +45,7 @@ class AdminUi(
                     println(success("👋 Goodbye!"))
                     break
                 }
+
                 else -> println(errorMsg("❌ Unknown option"))
             }
         }
