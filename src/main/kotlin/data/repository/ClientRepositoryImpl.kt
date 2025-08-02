@@ -5,7 +5,6 @@ import org.example.domain.exceptions.NotFoundException
 import org.example.domain.exceptions.SmallerThanZeroException
 import org.example.domain.exceptions.WithDrawException
 import org.example.domain.repository.ClientRepository
-import org.example.entity.Client
 
 class ClientRepositoryImpl(
     private val clientDataSource: ClientDataSource
