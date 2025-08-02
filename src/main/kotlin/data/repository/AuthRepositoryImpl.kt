@@ -6,7 +6,7 @@ import org.example.data.datasource.memory.EmployeeDataSource
 import org.example.domain.exceptions.NotFoundException
 import org.example.domain.repository.AuthRepository
 import org.example.entity.Auth
-import org.example.entity.Role
+import org.example.entity.util.Role
 
 class AuthRepositoryImpl(
     private val adminDataSource: AdminDataSource,
