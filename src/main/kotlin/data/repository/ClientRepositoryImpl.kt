@@ -1,6 +1,7 @@
 package org.example.data.repository
 
 import org.example.data.datasource.memory.ClientDataSource
+import org.example.domain.exceptions.NotFoundException
 import org.example.domain.exceptions.SmallerThanZeroException
 import org.example.domain.exceptions.WithDrawException
 import org.example.domain.repository.ClientRepository
@@ -29,6 +30,8 @@ class ClientRepositoryImpl(
     }
 
     override fun transferMoney(id: Int, amount: Double, receiverId: Int) {
+        clientDataSource.getAllClients().find { it.id == id }?:throw NotFoundException("no found client with id: $id")
+        clientDataSource.getAllClients().find { it.id == receiverId }?:throw NotFoundException("no found client with id: $receiverId")
         withdraw(id = id, amount = amount)
         deposit(id = receiverId, amount = amount)
     }
