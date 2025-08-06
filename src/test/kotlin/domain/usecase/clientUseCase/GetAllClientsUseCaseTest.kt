@@ -8,6 +8,7 @@ import org.example.domain.usecase.clientUseCase.GetAllClientsUseCase
 import org.example.entity.Client
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import kotlin.test.assertEquals
 
 class GetAllClientsUseCaseTest {
     private lateinit var getAllClientsUseCase: GetAllClientsUseCase
@@ -22,7 +23,7 @@ class GetAllClientsUseCaseTest {
     @Test
     fun `get all clients successfully`() {
         //given
-        every { getAllClientsUseCase() } returns listOf(
+        val clients = listOf(
             Client(
                 id = 1,
                 name = "name",
@@ -36,10 +37,14 @@ class GetAllClientsUseCaseTest {
                 balance = 0.0
             )
         )
+
+        every { employeeRepository.getAllClients() } returns clients
+
         //when
-        getAllClientsUseCase()
+        val result = getAllClientsUseCase()
         //then
         verify { employeeRepository.getAllClients() }
+        assertEquals(result, clients)
     }
 
 
