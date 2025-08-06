@@ -1,4 +1,4 @@
-package org.example.domain.usecase
+package org.example.domain.usecase.clientUseCase
 
 import org.example.domain.repository.EmployeeRepository
 

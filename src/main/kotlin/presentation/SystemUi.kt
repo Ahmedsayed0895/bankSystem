@@ -1,8 +1,8 @@
 package org.example.presentation
 
-import org.example.domain.exceptions.InvalidIdException
-import org.example.domain.usecase.LoginUseCase
-import org.example.entity.Role
+import org.example.domain.usecase.authUseCase.LoginUseCase
+import org.example.entity.util.Role
+import org.example.presentation.util.ConsoleStyle.errorMsg
 import org.example.presentation.util.ConsoleStyle.label
 import org.example.presentation.util.ConsoleStyle.success
 
@@ -15,23 +15,28 @@ class SystemUi (
     fun start() {
         try {
             while (true) {
-                println("starting system ui")
-                println("enter username")
+                label("🔐 Login to the system")
+                print("👤 Username: ")
                 val username = readln()
-                println("enter password")
+                print("🔑 Password: ")
                 val password = readln()
                 val auth = loginUseCase(
                     username = username,
                     password = password
                 )
+                println(success("✅ Logged in successfully as ${auth.role}"))
+
                 when (auth.role) {
-                    Role.ADMIN -> adminUi.startSystem()
+                    Role.ADMIN -> {
+
+                        adminUi.startSystem()
+                    }
                     Role.EMPLOYEE -> employeeUi.startSystem()
                     Role.CLIENT -> clientUi.startSystem()
                 }
             }
         }catch (e: Exception){
-            println(e.message)
+            errorMsg(e.message ?: "❌ Unexpected error")
         }
     }
 }

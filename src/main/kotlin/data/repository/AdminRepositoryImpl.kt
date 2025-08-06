@@ -1,8 +1,6 @@
 package org.example.data.repository
 
-import org.example.data.datasource.memory.AdminDataSource
 import org.example.data.datasource.memory.EmployeeDataSource
-import org.example.domain.exceptions.NotFoundException
 import org.example.domain.repository.AdminRepository
 import org.example.entity.Employee
 

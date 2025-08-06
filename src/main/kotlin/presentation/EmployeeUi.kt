@@ -1,7 +1,7 @@
 package org.example.presentation
 
 import org.example.domain.exceptions.InvalidIdException
-import org.example.domain.usecase.*
+import org.example.domain.usecase.clientUseCase.*
 import org.example.entity.Client
 import org.example.presentation.util.ConsoleStyle
 

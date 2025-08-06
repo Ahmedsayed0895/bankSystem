@@ -14,6 +14,7 @@ dependencies {
     implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.0.3"))
     implementation("io.insert-koin:koin-core")
     testImplementation(kotlin("test"))
+    testImplementation("io.mockk:mockk:1.14.5")
 
 }
 
